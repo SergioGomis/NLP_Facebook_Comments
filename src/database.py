@@ -26,3 +26,8 @@ class MongoObject():
         
         x = self.tweets3Collection.insert_one(tweet)
         return x
+    
+    def getTweetsCV(self,langu):
+
+        query = self.tweets3Collection.find({"metadata.iso_language_code":langu},{"_id":0,"id":1,"created_at":1,"user.screen_name":1,"full_text":1})
+        return query
